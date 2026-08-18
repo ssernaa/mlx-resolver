@@ -1,0 +1,13 @@
+name: Resolve
+on:
+  workflow_dispatch:
+jobs:
+  resolve:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - run: swift package resolve
+      - uses: actions/upload-artifact@v4
+        with:
+          name: package-resolved
+          path: Package.resolved
